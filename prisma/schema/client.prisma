@@ -1,0 +1,8 @@
+model Client {
+  client_id     String   @id @default(uuid())
+  name          String
+  balance_quote Decimal
+  balance_tokens Decimal
+
+  transactions  Transaction[] @relation("ClientTransactions")
+}

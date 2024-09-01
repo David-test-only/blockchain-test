@@ -1,0 +1,6 @@
+model PlatformBalance {
+  balance_id      String   @id @default(uuid())
+  balance_tokens  Decimal
+  balance_sol     Decimal
+  last_updated    DateTime
+}

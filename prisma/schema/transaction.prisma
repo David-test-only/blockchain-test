@@ -1,0 +1,34 @@
+model Transaction {
+  transaction_id          String    @id @default(uuid())
+  user_id                 String
+  asset_id                String
+  transaction_type        TransactionType
+  position_type           PositionType
+  amount_token            Decimal
+  quote_amount            Decimal
+  status                  TransactionStatus
+  date                    DateTime
+  dex_transaction_id      String
+  platform_balance_before Decimal
+  platform_balance_after  Decimal
+
+  client   Client   @relation("ClientTransactions", fields: [user_id], references: [client_id])
+  asset    Asset    @relation(fields: [asset_id], references: [asset_id])
+}
+
+enum TransactionType {
+  open_position
+  close_position
+}
+
+enum PositionType {
+  long
+  short
+}
+
+enum TransactionStatus {
+  pending
+  successful
+  failed
+}
+

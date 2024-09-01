@@ -1,0 +1,15 @@
+version: "3.8"
+name: dbpostgres
+services:
+  db:
+    container_name: db
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: dbuser
+      POSTGRES_PASSWORD: dbpass
+      POSTGRES_DB: dbname
+    volumes:
+      - ./backup:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"

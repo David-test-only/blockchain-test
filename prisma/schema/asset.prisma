@@ -1,0 +1,8 @@
+model Asset {
+  asset_id        String  @id @default(uuid())
+  ticker          String
+  contract_address String
+
+  transactions Transaction[]
+}
+
